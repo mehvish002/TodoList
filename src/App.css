@@ -60,6 +60,22 @@ h2{
   margin-left: -50%;
   font-style:oblique
 }
+#btn{
+  font-size: larger;
+  color: #3e4d6b;
+}
+button:hover{
+  color: #3e4d6b ;
+}
+img{
+  height: 50px;
+  width: 50px;
+  padding-left: 20px;
+  margin-top: 30px;
+}
+.title{
+  display: flex;
+}
 @media (max-width: 768px) {
   .container {
     font-size: 16px;

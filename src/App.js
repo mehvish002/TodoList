@@ -3,10 +3,16 @@ import "./App.css";
 
 
 const App = () => {
-  const storedTodos = JSON.parse(localStorage.getItem('todos'));
+ 
   const [todo, setTodo] = useState("");
-  const [todos, setTodos] = useState(storedTodos);
+  const [todos, setTodos] = useState([]);
   const [editId, setEditId] = useState(0);
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos'));
+    if (storedTodos) {
+      setTodos(storedTodos);
+    }
+  }, []);
 
 
  useEffect(() => {
@@ -34,6 +40,10 @@ const App = () => {
       setTodo("")
     }
   };
+  const clearAll=()=>{
+    setTodos([]);
+    localStorage.removeItem('todos');
+  };
 
 
   const handleDelete=(id)=>{
@@ -48,14 +58,19 @@ const App = () => {
   return(
   <div className="App">
   <div className="container">
+    <div className='title'>
     <h1>Todo List </h1>
+    <img src="https://thumbs.dreamstime.com/b/to-do-list-black-icon-clipboard-checklist-vector-graphics-various-use-187733056.jpg" alt='img'></img>
+    </div>
     <form className="todoForm" onSubmit={handleSubmit}>
       <input type="text"
       value={todo}
       onChange={(e)=>setTodo(e.target.value)} />
       <button type="submit">{editId?"Edit":"Add"}</button>
+       
       </form>
       <h2>Work to be done</h2>
+      
 
     <ul className="allTodos">
     {
@@ -68,6 +83,8 @@ const App = () => {
         </li>
       ))}
     </ul>
+    <button id='btn' onClick={clearAll}>Accomplished</button>
+     
   </div>
   </div>
   );
