@@ -34,6 +34,8 @@ const App = () => {
       setTodo("")
     }
   };
+
+
   const handleDelete=(id)=>{
     const delTodo=todos.filter((to)=>to.id !==id);
     setTodos([...delTodo]);
@@ -60,6 +62,7 @@ const App = () => {
       todos.map((t)=>(
         <li className="singleTodo">
           <span className="todoText" key={t.id}>{t.todo}</span>
+         
           <button onClick={()=>handleEdit(t.id)}>Edit</button>
           <button onClick={()=>handleDelete(t.id)}>Delete</button>
         </li>
