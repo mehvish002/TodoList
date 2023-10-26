@@ -6,9 +6,7 @@
   
   background-color: #3e4d6b;
 }
-.task.done  {
-  background-color: green;
-}
+
 
 .container{
   display: flex;
